@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let isPlaying = false;
 
   function playAudio() {
-    if (!audio) return;
-    audio.play().then(() => {
+    if (!audio) return Promise.reject('No audio element');
+    return audio.play().then(() => {
       if (iconMuted) iconMuted.style.display = 'none';
       if (iconPlaying) iconPlaying.style.display = 'block';
       if (soundWave) soundWave.classList.add('playing');
@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isPlaying = true;
     }).catch(error => {
       console.log('Playback blocked. Awaiting interaction:', error);
+      throw error;
     });
   }
 
@@ -157,15 +158,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // Interactive handler to bypass browser audio policies
   const startAudioOnInteraction = () => {
     if (!isPlaying) {
-      playAudio();
+      playAudio().then(() => {
+        // Success! Remove all interactive triggers
+        document.removeEventListener('click', startAudioOnInteraction);
+        document.removeEventListener('touchstart', startAudioOnInteraction);
+        document.removeEventListener('touchend', startAudioOnInteraction);
+        document.removeEventListener('mousedown', startAudioOnInteraction);
+        document.removeEventListener('keydown', startAudioOnInteraction);
+        document.removeEventListener('wheel', startAudioOnInteraction);
+      }).catch(err => {
+        // Failed, keep listeners active so next gesture tries again!
+        console.log('Interaction trigger failed, keeping listeners active:', err);
+      });
     }
-    // Remove document listeners since we interacted
-    document.removeEventListener('click', startAudioOnInteraction);
-    document.removeEventListener('touchstart', startAudioOnInteraction);
   };
   
   document.addEventListener('click', startAudioOnInteraction);
   document.addEventListener('touchstart', startAudioOnInteraction);
+  document.addEventListener('touchend', startAudioOnInteraction);
+  document.addEventListener('mousedown', startAudioOnInteraction);
+  document.addEventListener('keydown', startAudioOnInteraction);
+  document.addEventListener('wheel', startAudioOnInteraction);
 
   // Try to play immediately on load (might be blocked, which is handled above)
   playAudio();
