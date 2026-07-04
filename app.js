@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const translations = {
     uz: {
-      title: "Farruxbek & Fotimai Zahro — Taklifnoma",
+      title: "Qobil & Muxlisa — Taklifnoma",
       hero_subtitle: "Nikoh To'yi",
       hero_quote: "«Sevgi — bu bir-biriga qarash emas, balki bir yo‘nalishda birga qarashdir.»",
       hero_author: "— Jaloliddin Rumiy",
       invite_body: "Aziz va qadrli insonlar, Biz hayotimizning yangi bosqichiga qadam qo‘ymoqdamiz. Bu kun — faqat marosim emas, bu — ikki qalbning bir yo‘lga aylanishi. Sizning ishtirokingiz biz uchun qadrlidir.",
-      details_body: "Sana: 13.06.2026 | Vaqt: 10:00 | Manzil: Labi Hovuz",
+      details_body: "Sana: 30.08.2026 | Vaqt: 18:00 (Zaks: 13:00)<br>Manzil: Toshkent viloyat Toshkent tumani, Shamsiobod shaharchasi<br>Mo’ljal: Oltintepa markazi<br><a href='https://yandex.com/maps/-/CTeT7T-z' target='_blank' class='location-link'>Xaritada ko'rish (Yandex Maps)</a>",
       closing_quote: "«Ba’zi lahzalar so‘zga sig‘maydi. Ular faqat his qilinadi. Sizni yonimizda ko‘rishdan mamnun bo‘lamiz.»",
       scroll_open: "Ochish uchun bosing",
       countdown_subtitle: "Tantanaga qolgan vaqt",
@@ -23,15 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Daqiqa",
       countdown_seconds: "Soniya",
       music_label: "Fon musiqasi",
-      footer_closing: "Muhabbat bilan, Farruxbek & Fotimai Zahro"
+      footer_closing: "Muhabbat bilan, Qobil & Muxlisa"
+    },
+    kz: {
+      title: "Қобил мен Мухлиса — Той шақыруы",
+      hero_subtitle: "Үйлену тойы",
+      hero_quote: "«Сүйіспеншілік — бір-біріне қарау емес, бір бағытқа бірге қарау.»",
+      hero_author: "— Жалаладдин Руми",
+      invite_body: "Құрметті туыстар мен достар, біз өміріміздің жаңа бетін ашуда. Бұл күн — жай ғана той емес, екі жүректің бір жолға айналуы. Сіздің қатысуыңыз бізге өте қымбат.",
+      details_body: "Күні: 30.08.2026 | Уақыты: 18:00 (ЗАГС: 13:00)<br>Мекен-жайы: Ташкент облысы, Ташкент ауданы, Шамсиобод қалашығы<br>Бағдар: Олтинтепа орталығы<br><a href='https://yandex.com/maps/-/CTeT7T-z' target='_blank' class='location-link'>Картада қарау (Яндекс Карта)</a>",
+      closing_quote: "«Кейбір сәттерді сөзбен жеткізу мүмкін емес. Оларды тек сезінуге болады. Сізді қасымызда көргенімізге қуаныштымыз.»",
+      scroll_open: "Ашу үшін нұқыңыз",
+      countdown_subtitle: "Тойға дейін қалды",
+      countdown_days: "Күн",
+      countdown_hours: "Сағат",
+      countdown_minutes: "Минут",
+      countdown_seconds: "Секунд",
+      music_label: "Фондық музыка",
+      footer_closing: "Сүйіспеншілікпен, Қобил мен Мухлиса"
     },
     ru: {
-      title: "Свадебное Приглашение — Фаррухбек и Фотима Захро",
+      title: "Свадебное Приглашение — Кобил и Мухлиса",
       hero_subtitle: "Свадебное Торжество",
       hero_quote: "«Любовь — это не смотреть друг на друга, а смотреть в одном направлении.»",
       hero_author: "— Джалаладдин Руми",
       invite_body: "Дорогие и близкие нам люди, мы делаем шаг в новый этап нашей жизни. Этот день — не просто церемония, а слияние двух сердец в единый путь. Ваше присутствие очень дорого для нас.",
-      details_body: "Дата: 13.06.2026 | Время: 10:00 | Место: Лаби Хауз",
+      details_body: "Дата: 30.08.2026 | Время: 18:00 (Закс: 13:00)<br>Место: Ташкентская область, Ташкентский район, городок Шамсиобод<br>Ориентир: центр Олтинтепа<br><a href='https://yandex.com/maps/-/CTeT7T-z' target='_blank' class='location-link'>Посмотреть на карте (Яндекс Карты)</a>",
       closing_quote: "«Есть моменты, которые не выразить словами. Их можно только почувствовать. Будем рады видеть вас рядом с нами.»",
       scroll_open: "Открыть приглашение",
       countdown_subtitle: "До свадьбы осталось",
@@ -40,15 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Минут",
       countdown_seconds: "Секунд",
       music_label: "Фоновая музыка",
-      footer_closing: "С любовью, Фаррухбек и Фотима Захро"
+      footer_closing: "С любовью, Кобил и Мухлиса"
     },
     en: {
-      title: "Farruxbek & Fotimai Zahro — Wedding Invitation",
+      title: "Qobil & Muxlisa — Wedding Invitation",
       hero_subtitle: "Wedding Celebration",
       hero_quote: "\"Love does not consist in gazing at each other, but in looking together in the same direction.\"",
       hero_author: "— Jalaluddin Rumi",
       invite_body: "Dear family and friends, we are taking a step into a new chapter of our lives. This day is not just a ceremony, but the union of two hearts into one path. Your presence is very precious to us.",
-      details_body: "Date: 13.06.2026 | Time: 10:00 | Venue: Labi Hovuz",
+      details_body: "Date: 30.08.2026 | Time: 18:00 (Registration: 13:00)<br>Venue: Tashkent region, Tashkent district, Shamsiobod town<br>Landmark: Oltintepa center<br><a href='https://yandex.com/maps/-/CTeT7T-z' target='_blank' class='location-link'>View on Map (Yandex Maps)</a>",
       closing_quote: "\"Some moments are beyond words. They can only be felt. We look forward to seeing you by our side.\"",
       scroll_open: "Scroll to Open",
       countdown_subtitle: "The Celebration Begins In",
@@ -57,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Minutes",
       countdown_seconds: "Seconds",
       music_label: "Background Music",
-      footer_closing: "With love, Farruxbek & Fotimai Zahro"
+      footer_closing: "With love, Qobil & Muxlisa"
     }
   };
 
@@ -202,8 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // 4. COUNTDOWN TIMER
   // ==========================================================================
-  // Target date: June 13, 2026 at 10:00 AM Bukhara/Tashkent Time (UTC+5)
-  const targetDate = new Date('2026-06-13T10:00:00+05:00').getTime();
+  // Target date: August 30, 2026 at 18:00 PM Tashkent Time (UTC+5)
+  const targetDate = new Date('2026-08-30T18:00:00+05:00').getTime();
   
   const daysEl = document.getElementById('days');
   const hoursEl = document.getElementById('hours');
