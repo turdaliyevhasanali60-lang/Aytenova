@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Daqiqa",
       countdown_seconds: "Soniya",
       music_label: "Fon musiqasi",
-      footer_closing: "Muhabbat bilan, Qobil & Muxlisa"
+      footer_closing: "Muhabbat bilan, Qobil & Muxlisa",
+      copy_address: "Manzilni nusxalash",
+      copy_address_done: "Nusxalandi!",
+      address_copy_text: "Toshkent viloyat, Toshkent tumani, Shamsiobod shaharchasi. Mo‘ljal: Oltintepa markazi"
     },
     kz: {
       title: "Қобил мен Мухлиса — Той шақыруы",
@@ -42,7 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Минут",
       countdown_seconds: "Секунд",
       music_label: "Фондық музыка",
-      footer_closing: "Сүйіспеншілікпен, Қобил мен Мухлиса"
+      footer_closing: "Сүйіспеншілікпен, Қобил мен Мухлиса",
+      copy_address: "Мекен-жайды көшіру",
+      copy_address_done: "Көшірілді!",
+      address_copy_text: "Ташкент облысы, Ташкент ауданы, Шамсиобод қалашығы. Бағдар: Олтинтепа орталығы"
     },
     ru: {
       title: "Свадебное Приглашение — Кобил и Мухлиса",
@@ -60,7 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Минут",
       countdown_seconds: "Секунд",
       music_label: "Фоновая музыка",
-      footer_closing: "С любовью, Кобил и Мухлиса"
+      footer_closing: "С любовью, Кобил и Мухлиса",
+      copy_address: "Скопировать адрес",
+      copy_address_done: "Скопировано!",
+      address_copy_text: "Ташкентская область, Ташкентский район, городок Шамсиобод. Ориентир: центр Олтинтепа"
     },
     en: {
       title: "Qobil & Muxlisa — Wedding Invitation",
@@ -78,7 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Minutes",
       countdown_seconds: "Seconds",
       music_label: "Background Music",
-      footer_closing: "With love, Qobil & Muxlisa"
+      footer_closing: "With love, Qobil & Muxlisa",
+      copy_address: "Copy address",
+      copy_address_done: "Copied!",
+      address_copy_text: "Tashkent region, Tashkent district, Shamsiobod town. Landmark: Oltintepa center"
     }
   };
 
@@ -119,6 +131,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Translate page Title
     document.title = translations[lang]['title'] || "Wedding Invitation";
+
+    // Reset the copy-address button's icon back to its default state
+    // (its label text is already re-translated above via data-i18n)
+    const copyBtnEl = document.getElementById('copy-address-btn');
+    if (copyBtnEl) {
+      copyBtnEl.classList.remove('copied');
+      const copyIconEl = copyBtnEl.querySelector('.copy-icon');
+      const checkIconEl = copyBtnEl.querySelector('.check-icon');
+      if (copyIconEl) copyIconEl.style.display = '';
+      if (checkIconEl) checkIconEl.style.display = 'none';
+    }
   }
 
   // Bind Switcher Click Events
@@ -132,6 +155,64 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load language preference from LocalStorage (fallback: uz)
   const savedLang = localStorage.getItem('wedding_lang') || 'uz';
   setLanguage(savedLang);
+
+  // ==========================================================================
+  // 2b. COPY ADDRESS BUTTON
+  // ==========================================================================
+  function copyTextToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback for browsers without the async Clipboard API
+    return new Promise((resolve, reject) => {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        ok ? resolve() : reject(new Error('execCommand copy failed'));
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  const copyAddressBtn = document.getElementById('copy-address-btn');
+  if (copyAddressBtn) {
+    const copyIcon = copyAddressBtn.querySelector('.copy-icon');
+    const checkIcon = copyAddressBtn.querySelector('.check-icon');
+    const copyLabel = copyAddressBtn.querySelector('.copy-address-label');
+    let copyResetTimer = null;
+
+    copyAddressBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const addressText = translations[currentLang].address_copy_text;
+      if (!addressText) return;
+
+      copyTextToClipboard(addressText).then(() => {
+        clearTimeout(copyResetTimer);
+        copyAddressBtn.classList.add('copied');
+        if (copyIcon) copyIcon.style.display = 'none';
+        if (checkIcon) checkIcon.style.display = 'block';
+        if (copyLabel) copyLabel.textContent = translations[currentLang].copy_address_done;
+
+        copyResetTimer = setTimeout(() => {
+          copyAddressBtn.classList.remove('copied');
+          if (copyIcon) copyIcon.style.display = '';
+          if (checkIcon) checkIcon.style.display = 'none';
+          if (copyLabel) copyLabel.textContent = translations[currentLang].copy_address;
+        }, 2000);
+      }).catch(() => {
+        // Clipboard genuinely unavailable on this device — fail silently
+        // rather than showing a disruptive error for a minor convenience.
+      });
+    });
+  }
 
   // ==========================================================================
   // 3. BACKGROUND MUSIC CONTROLLER & AUTOPLAY LOGIC

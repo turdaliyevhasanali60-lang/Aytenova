@@ -458,6 +458,46 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
+/* Discreet copy-to-clipboard affordance for the venue address, kept
+   visually quieter than the primary "View on map" CTA below */
+.copy-address-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  padding: 0.5rem 1rem;
+  min-height: 38px;
+  background: transparent;
+  color: var(--gold-rich);
+  border: 1px solid rgba(200, 149, 46, 0.4);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 2.6vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 2;
+  transition: var(--transition-smooth);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.copy-address-btn:hover,
+.copy-address-btn:focus-visible {
+  background: rgba(200, 149, 46, 0.1);
+  border-color: var(--gold-rich);
+}
+
+.copy-address-btn.copied {
+  border-color: var(--gold-rich);
+  background: rgba(200, 149, 46, 0.12);
+}
+
+.copy-address-btn .copy-icon,
+.copy-address-btn .check-icon {
+  flex-shrink: 0;
+}
+
 .detail-label {
   color: var(--gold-rich);
   font-weight: 600;
@@ -882,9 +922,9 @@ footer {
   .invitation-card {
     width: 95% !important;
     max-width: 100% !important;
-    /* Extra bottom padding keeps the details text clear of the bottom
-       corner ornaments now that it renders slightly larger */
-    padding: 2rem 1.4rem 6.8rem !important;
+    /* Extra bottom padding keeps the details text and copy-address
+       button clear of the bottom corner ornaments */
+    padding: 2rem 1.4rem 8.4rem !important;
     background: var(--glass-bg-solid) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -1190,7 +1230,9 @@ footer {
 
   .invitation-card {
     max-width: 680px !important;
-    padding: 4rem 3rem;
+    /* Extra bottom padding keeps the details text and copy-address
+       button clear of the bottom corner ornaments */
+    padding: 4rem 3rem 8rem;
   }
 
   .invitation-body {
