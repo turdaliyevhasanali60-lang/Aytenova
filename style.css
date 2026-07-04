@@ -52,6 +52,12 @@ html, body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent select and copy */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Custom Scrollbar */
@@ -146,10 +152,10 @@ h1, h2, h3, h4 {
 /* Botanical Corners */
 .botanical-corner {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  color: #e5c158;
-  opacity: 0.85;
+  width: 90px;
+  height: 90px;
+  mix-blend-mode: screen;
+  opacity: 0.92;
   pointer-events: none;
   z-index: 5;
   transition: var(--transition-smooth);
@@ -1019,15 +1025,16 @@ footer {
 
   /* Botanical corner ornaments — smaller on mobile */
   .botanical-corner {
-    width: 38px;
-    height: 38px;
+    width: 60px;
+    height: 60px;
   }
 
   /* Location link */
   .location-link {
-    font-size: 0.68rem;
-    padding: 0.55rem 1.2rem;
-    letter-spacing: 0.12em;
+    font-size: 0.6rem;
+    padding: 0.5rem 1.1rem;
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
   }
 }
 
@@ -1067,8 +1074,8 @@ footer {
   }
 
   .botanical-corner {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
   }
 }
 
