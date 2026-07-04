@@ -101,7 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[lang][key]) {
-        el.innerHTML = translations[lang][key];
+        let content = translations[lang][key];
+        
+        // Dynamically wrap labels (words ending with a colon) in gold highlight tags
+        if (key === 'details_body') {
+          // Matches words or hyphenated labels followed by colons, e.g. "Sana:", "Мекен-жайы:", "Ориентир:"
+          content = content.replace(/([A-Za-zА-Яа-яӘәІіҢңҒғҮүҰұҚқӨөһҺ’‘'’\-]+:)/g, '<span class="detail-label">$1</span>');
+        }
+        
+        el.innerHTML = content;
       }
     });
 
