@@ -411,7 +411,8 @@ h1, h2, h3, h4 {
 .invitation-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(0.95rem, 3.5vw, 1.12rem);
+  /* Decorative quote — de-emphasized so the practical details below stand out */
+  font-size: clamp(0.88rem, 3.2vw, 1.02rem);
   color: var(--text-muted);
   margin-bottom: 1.8rem;
   line-height: 1.7;
@@ -422,7 +423,8 @@ h1, h2, h3, h4 {
 
 .invitation-body {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 4.5vw, 1.28rem) !important;
+  /* Decorative prose — de-emphasized so the practical details below stand out */
+  font-size: clamp(0.98rem, 3.8vw, 1.12rem) !important;
   color: var(--text-dark);
   margin-bottom: 1.8rem;
   line-height: 1.8;
@@ -444,12 +446,14 @@ h1, h2, h3, h4 {
 
 .invitation-details {
   font-family: var(--font-serif);
-  font-weight: 300;
+  /* The actionable facts (date, time, venue) — emphasized above the decorative
+     quote/body text so guests can find them at a glance */
+  font-weight: 400;
   color: var(--text-dark);
   margin-top: 1.4rem;
   letter-spacing: 0.03em;
-  font-size: clamp(0.98rem, 4vw, 1.15rem);
-  line-height: 1.85;
+  font-size: clamp(1.08rem, 4.6vw, 1.28rem);
+  line-height: 1.9;
   z-index: 2;
   text-align: center;
 }
@@ -458,8 +462,8 @@ h1, h2, h3, h4 {
   color: var(--gold-rich);
   font-weight: 600;
   font-family: var(--font-sans);
-  font-size: clamp(0.72rem, 2.5vw, 0.82rem);
-  letter-spacing: 0.08em;
+  font-size: clamp(0.85rem, 3.4vw, 0.98rem);
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   display: inline-block;
   margin-right: 0.25rem;
@@ -878,20 +882,22 @@ footer {
   .invitation-card {
     width: 95% !important;
     max-width: 100% !important;
-    padding: 2rem 1.4rem !important;
+    /* Extra bottom padding keeps the details text clear of the bottom
+       corner ornaments now that it renders slightly larger */
+    padding: 2rem 1.4rem 6.8rem !important;
     background: var(--glass-bg-solid) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
   .invitation-quote {
-    font-size: 1rem;
+    font-size: 0.92rem;
     padding: 0 0.5rem;
     margin-bottom: 1.2rem;
   }
 
   .invitation-body {
-    font-size: 1.05rem !important;
+    font-size: 0.98rem !important;
     line-height: 1.65;
     margin-bottom: 1.2rem;
   }
@@ -902,8 +908,12 @@ footer {
   }
 
   .invitation-details {
-    font-size: 0.95rem;
-    line-height: 1.75;
+    font-size: 1.08rem;
+    line-height: 1.85;
+  }
+
+  .detail-label {
+    font-size: 0.88rem;
   }
 
   #location-section {
@@ -1011,17 +1021,16 @@ footer {
   /* Invitation card */
   .invitation-card {
     width: 96% !important;
-    padding: 2.2rem 1.4rem;
     border-radius: 16px;
   }
 
   .invitation-quote {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     padding: 0 0.5rem;
   }
 
   .invitation-body {
-    font-size: 1.05rem !important;
+    font-size: 0.92rem !important;
     line-height: 1.65;
   }
 
@@ -1030,8 +1039,13 @@ footer {
   }
 
   .invitation-details {
-    font-size: 0.9rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-top: 1rem;
+  }
+
+  .detail-label {
+    font-size: 0.85rem;
   }
 
   /* Countdown */
@@ -1180,7 +1194,7 @@ footer {
   }
 
   .invitation-body {
-    font-size: 1.4rem !important;
+    font-size: 1.18rem !important;
   }
 
   .invitation-names {
