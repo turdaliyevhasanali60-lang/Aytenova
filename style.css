@@ -52,6 +52,9 @@ html, body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* iOS momentum scroll */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   
   /* Prevent select and copy */
   -webkit-user-select: none;
@@ -797,15 +800,16 @@ footer {
 /* Scroll Animation classes */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
 .scroll-reveal.reveal-active {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 /* ==========================================================================
@@ -833,6 +837,9 @@ footer {
     max-width: 100% !important;
     padding: 2.8rem 1.8rem;
     margin: 4rem auto 5rem auto !important;
+    background: rgba(12, 21, 36, 0.82) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .hero-title {
@@ -859,6 +866,9 @@ footer {
     width: 95% !important;
     max-width: 100% !important;
     padding: 2.8rem 1.8rem;
+    background: rgba(12, 21, 36, 0.82) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .invitation-quote {
@@ -884,11 +894,25 @@ footer {
     width: 95% !important;
     max-width: 100% !important;
     padding: 2.8rem 1.8rem;
+    background: rgba(12, 21, 36, 0.82) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .countdown-box {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+
+  .countdown-item {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(12, 21, 36, 0.65) !important;
+  }
+
+  .location-link {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   /* Footer */
@@ -993,6 +1017,9 @@ footer {
   .countdown-item {
     padding: 1.2rem 0.4rem;
     border-radius: 12px;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(12, 21, 36, 0.65) !important;
   }
 
   .countdown-number {
@@ -1165,30 +1192,32 @@ footer {
 
 /* Location Link Button Style */
 .location-link {
-  display: inline-block;
-  margin-top: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.4rem;
   color: #e5c158 !important;
   text-decoration: none;
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: clamp(0.72rem, 3vw, 0.82rem);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 600;
-  border: 1px solid rgba(229, 193, 88, 0.4);
-  padding: 0.65rem 1.6rem;
+  border: 1px solid rgba(229, 193, 88, 0.45);
+  padding: 0.75rem 2rem;
+  min-height: 44px; /* Apple HIG tap target */
   border-radius: 30px;
-  background: rgba(12, 21, 36, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(12, 21, 36, 0.55);
   transition: var(--transition-bounce);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.location-link:hover {
+.location-link:hover,
+.location-link:active {
   background: #e5c158;
   color: #0c1524 !important;
   border-color: #e5c158;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(229, 193, 88, 0.35);
 }
-
