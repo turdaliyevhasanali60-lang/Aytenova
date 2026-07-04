@@ -16,7 +16,10 @@
   --accent-gold-light: #af986c;
   --accent-gold-dark: #5e4b2e;
   --accent-gold-glow: rgba(140, 114, 71, 0.3);
-  
+
+  /* Vivid gold used for accents sitting on the dark glass cards (hero/invitation/countdown) */
+  --gold-accent: #e5c158;
+
   --text-light: #2d271e;
   --text-muted: #6e6457;
   --text-dark: #2d271e;
@@ -123,7 +126,10 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 0.8rem;
-  color: var(--accent-gold);
+  /* Both usages (hero + countdown) sit on the dark glass cards, so use the
+     vivid gold accent that matches every other accent on those cards —
+     the muted --accent-gold was hard to read against the dark background. */
+  color: var(--gold-accent);
   margin-bottom: 1.5rem;
   font-weight: 500;
   display: block;
@@ -206,7 +212,7 @@ h1, h2, h3, h4 {
   align-items: center;
   margin: 1.8rem auto;
   opacity: 0.95;
-  color: #e5c158;
+  color: var(--gold-accent);
   width: 100%;
 }
 
@@ -214,7 +220,7 @@ h1, h2, h3, h4 {
   width: 180px;
   max-width: 45vw;
   height: auto;
-  color: #e5c158;
+  color: var(--gold-accent);
   fill: none;
 }
 
@@ -282,7 +288,7 @@ h1, h2, h3, h4 {
   font-size: 1.8rem;
   font-family: var(--font-serif-decorative);
   margin: 0.15rem 0;
-  color: #e5c158;
+  color: var(--gold-accent);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -318,7 +324,7 @@ h1, h2, h3, h4 {
 .hero-author {
   font-size: 0.8rem;
   font-style: normal;
-  color: #e5c158;
+  color: var(--gold-accent);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-top: 0.6rem;
@@ -351,7 +357,7 @@ h1, h2, h3, h4 {
 
 .scroll-indicator:hover {
   opacity: 1;
-  color: #e5c158;
+  color: var(--gold-accent);
 }
 
 .scroll-indicator svg {
@@ -359,7 +365,7 @@ h1, h2, h3, h4 {
   height: 20px;
   animation: bounce 2s infinite;
   fill: none;
-  stroke: #e5c158;
+  stroke: var(--gold-accent);
   stroke-width: 2;
 }
 
@@ -433,7 +439,7 @@ h1, h2, h3, h4 {
 .invitation-names {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 8vw, 2.6rem);
-  color: #e5c158;
+  color: var(--gold-accent);
   margin: 1.4rem 0;
   letter-spacing: 0.04em;
   font-weight: 400;
@@ -455,7 +461,7 @@ h1, h2, h3, h4 {
 }
 
 .detail-label {
-  color: #e5c158;
+  color: var(--gold-accent);
   font-weight: 600;
   font-family: var(--font-sans);
   font-size: clamp(0.72rem, 2.5vw, 0.82rem);
@@ -533,7 +539,7 @@ h1, h2, h3, h4 {
 
 .countdown-item:hover {
   transform: translateY(-4px);
-  border-color: #e5c158;
+  border-color: var(--gold-accent);
   box-shadow: 0 12px 28px rgba(229, 193, 88, 0.3);
 }
 
@@ -541,7 +547,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 5vw, 3.2rem);
   font-weight: 500;
-  color: #e5c158;
+  color: var(--gold-accent);
   line-height: 1;
   margin-bottom: 0.5rem;
   display: block;
@@ -953,6 +959,18 @@ footer {
     font-size: 0.6rem;
     padding: 4px 9px;
   }
+
+  /* These two widgets are `position: fixed` and stay on screen for the
+     entire scroll. Backdrop-filter on a fixed element forces the browser
+     to recompute the blur every single frame while scrolling, which is
+     the main cause of janky/rough scrolling on mobile. Swap to a solid
+     translucent background instead — visually close, but GPU-cheap. */
+  .language-switcher,
+  .music-circle-btn {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.92);
+  }
 }
 
 /* ---- Small mobile (max 480px) ---- */
@@ -1218,7 +1236,7 @@ footer {
   align-items: center;
   justify-content: center;
   margin-top: 1.4rem;
-  color: #e5c158 !important;
+  color: var(--gold-accent) !important;
   text-decoration: none;
   font-family: var(--font-sans);
   font-size: clamp(0.72rem, 3vw, 0.82rem);
@@ -1237,9 +1255,9 @@ footer {
 
 .location-link:hover,
 .location-link:active {
-  background: #e5c158;
+  background: var(--gold-accent);
   color: #0c1524 !important;
-  border-color: #e5c158;
+  border-color: var(--gold-accent);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(229, 193, 88, 0.35);
 }
