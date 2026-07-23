@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const translations = {
     uz: {
-      title: "Qobil & Muxlisa — Taklifnoma",
+      title: "Qobiljon & Muxlisa — Taklifnoma",
       hero_subtitle: "Nikoh To'yi",
       hero_quote: "«Sevgi — bu bir-biriga qarash emas, balki bir yo‘nalishda birga qarashdir.»",
       hero_author: "— Jaloliddin Rumiy",
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Daqiqa",
       countdown_seconds: "Soniya",
       music_label: "Fon musiqasi",
-      footer_closing: "Muhabbat bilan, Qobil & Muxlisa",
+      footer_closing: "Muhabbat bilan, Qobiljon & Muxlisa",
       copy_address: "Manzilni nusxalash",
       copy_address_done: "Nusxalandi!",
       address_copy_text: "Toshkent viloyat, Toshkent tumani, Shamsiobod shaharchasi. Mo‘ljal: Oltintepa markazi"
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       address_copy_text: "Ташкентская область, Ташкентский район, городок Шамсиобод. Ориентир: центр Олтинтепа"
     },
     en: {
-      title: "Qobil & Muxlisa — Wedding Invitation",
+      title: "Qobiljon & Muxlisa — Wedding Invitation",
       hero_subtitle: "Wedding Celebration",
       hero_quote: "\"Love does not consist in gazing at each other, but in looking together in the same direction.\"",
       hero_author: "— Jalaluddin Rumi",
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
       countdown_minutes: "Minutes",
       countdown_seconds: "Seconds",
       music_label: "Background Music",
-      footer_closing: "With love, Qobil & Muxlisa",
+      footer_closing: "With love, Qobiljon & Muxlisa",
       copy_address: "Copy address",
       copy_address_done: "Copied!",
       address_copy_text: "Tashkent region, Tashkent district, Shamsiobod town. Landmark: Oltintepa center"
