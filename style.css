@@ -1261,6 +1261,13 @@ footer {
   }
 }
 
+.footer-host {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
 /* ---- Wide desktop (min 1440px) ---- */
 @media (min-width: 1440px) {
 
